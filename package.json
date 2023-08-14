@@ -1,0 +1,33 @@
+{
+  "name": "grapesjs-plugin-chartjs-bar",
+  "version": "0.0.1",
+  "description": "Chart.js editor for GrapesJs",
+  "main": "dist/grapesjs-plugin-chartjs.min.js",
+  "scripts": {
+    "lint": "eslint src",
+    "build": "grapesjs-cli build",
+    "start": "grapesjs-cli serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoderDotJs/grapejs-plugin-chartjs-bar"
+  },
+  "keywords": [
+    "grapesjs",
+    "plugin",
+    "chart.js",
+    "chart",
+    "graph",
+    "wysiwyg",
+    "bar",
+    "barchart"
+  ],
+  "author": "CoderDotJs",
+  "license": "MIT License",
+  "devDependencies": {
+    "grapesjs-cli": "^1.0.14"
+  },
+  "dependencies": {
+    "grapesjs": "^0.19.4"
+  }
+}
