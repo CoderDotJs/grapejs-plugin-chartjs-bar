@@ -1,8 +1,8 @@
 {
   "name": "grapesjs-plugin-chartjs-bar",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "Chart.js editor for GrapesJs",
-  "main": "dist/grapesjs-plugin-chartjs.min.js",
+  "main": "dist/grapesjs-plugin-chartjs-bar.min.js",
   "scripts": {
     "lint": "eslint src",
     "build": "grapesjs-cli build",
@@ -25,7 +25,7 @@
   "author": "CoderDotJs",
   "license": "MIT",
   "devDependencies": {
-    "grapesjs-cli": "^1.0.14"
+    "grapesjs-cli": "^1.0.15"
   },
   "dependencies": {
     "grapesjs": "^0.19.4"
