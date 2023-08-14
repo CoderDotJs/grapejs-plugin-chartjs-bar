@@ -239,7 +239,7 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
         const canvas = element.querySelector(".chartsjs");
         element &&
           new Chart(canvas, {
-            type: "radar",
+            type: "bar",
             data: data,
             options: options,
           });
