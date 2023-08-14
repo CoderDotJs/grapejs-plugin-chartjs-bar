@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-plugin-chartjs-bar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chart.js editor for GrapesJs",
   "main": "dist/grapesjs-plugin-chartjs.min.js",
   "scripts": {
