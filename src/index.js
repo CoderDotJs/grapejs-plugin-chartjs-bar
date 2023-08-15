@@ -9,12 +9,6 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
   const script = function (props) {
     if (props.data && props.data.labels) {
       const datasets = [];
-      props.data?.values &&
-        datasets.push({
-          label: props.data?.values?.map((dataSet) => dataSet.label),
-
-          data: props.data?.values?.map((dataSet) => dataSet.data),
-        });
       const colors = [
         "#0FC083",
         "#81D065",
@@ -49,8 +43,8 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
       props.data?.values?.forEach((dataSet, i) => {
         datasets.push({
           label: dataSet.label,
-          backgroundColor: colors[i],
-          borderColor: colors[i],
+          backgroundColor: colors,
+          borderColor: colors,
           borderRadius: 20,
           data: dataSet.data,
           borderWidth: 1,
@@ -256,13 +250,15 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
         dataLabels.setAttribute("type", "text/javascript");
         dataLabels.src =
           "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0";
+        dataLabels.onload = () => {
+          const script = document.createElement("script");
+          script.onload = initLib;
+          script.setAttribute("type", "text/javascript");
+          script.src =
+            "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js";
+          document.body.appendChild(script);
+        };
         document.body.appendChild(dataLabels);
-        const script = document.createElement("script");
-        script.onload = initLib;
-        script.setAttribute("type", "text/javascript");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js";
-        document.body.appendChild(script);
       } else {
         initLib();
       }
