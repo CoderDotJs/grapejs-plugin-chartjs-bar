@@ -15,73 +15,46 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
 
           data: props.data?.values?.map((dataSet) => dataSet.data),
         });
-      props.data?.values?.forEach((dataSet) => {
+      const colors = [
+        "#0FC083",
+        "#81D065",
+        "#35ECB5",
+        "#4FC3C7",
+        "#A6CACB",
+        "#EAFB86",
+        "#F7BC24",
+        "#EB6C99",
+        "#8166AD",
+        "#18A1AD",
+        "#F1F1F1",
+        "#87D5AE",
+        "#85C1C8",
+        "#4FC3C7",
+        "#A6CACB",
+        "#EAFB86",
+        "#EB6C99",
+        "#F7BC24",
+        "#0FC083",
+        "#8166AD",
+        "#18A1AD",
+        "#81D065",
+        "#35ECB5",
+        "#4FC3C7",
+        "#A6CACB",
+        "#EAFB86",
+        "#F7BC24",
+        "#EB6C99",
+        "#8166AD",
+      ];
+      props.data?.values?.forEach((dataSet, i) => {
         datasets.push({
           label: dataSet.label,
-          backgroundColor: [
-            "#0FC083",
-            "#81D065",
-            "#35ECB5",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#F7BC24",
-            "#EB6C99",
-            "#8166AD",
-            "#18A1AD",
-            "#F1F1F1",
-            "#87D5AE",
-            "#85C1C8",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#EB6C99",
-            "#F7BC24",
-            "#0FC083",
-            "#8166AD",
-            "#18A1AD",
-            "#81D065",
-            "#35ECB5",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#F7BC24",
-            "#EB6C99",
-            "#8166AD",
-          ],
-          borderColor: [
-            "#0FC083",
-            "#81D065",
-            "#35ECB5",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#F7BC24",
-            "#EB6C99",
-            "#8166AD",
-            "#18A1AD",
-            "#F1F1F1",
-            "#87D5AE",
-            "#85C1C8",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#EB6C99",
-            "#F7BC24",
-            "#0FC083",
-            "#8166AD",
-            "#18A1AD",
-            "#81D065",
-            "#35ECB5",
-            "#4FC3C7",
-            "#A6CACB",
-            "#EAFB86",
-            "#F7BC24",
-            "#EB6C99",
-            "#8166AD",
-          ],
-          borderRadius: "20px",
+          backgroundColor: colors[i],
+          borderColor: colors[i],
+          borderRadius: 20,
           data: dataSet.data,
+          borderWidth: 1,
+          borderSkipped: "start",
         });
       });
 
@@ -225,19 +198,15 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
               },
               anchor: "end",
               align: "start",
-              // rotation: -90,
               offset: -20,
               clamp: false,
             },
             tooltip: {
-              // backgroundColor: '#ffffff',
               titleColor: "#fff",
               footerColor: "#fff",
               boxWidth: 0,
               boxHeight: 0,
               displayColors: false,
-              // borderColor: 'rgba(0, 0, 0, 0.8)',
-              // borderWidth: 1,
               callbacks: {
                 footer: (data) => {
                   const context = data[0];
@@ -278,10 +247,16 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
             type: "bar",
             data: data,
             options: options,
+            plugins: [ChartDataLabels],
           });
       };
 
       if (typeof someExtLib == "undefined") {
+        const dataLabels = document.createElement("script");
+        dataLabels.setAttribute("type", "text/javascript");
+        dataLabels.src =
+          "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0";
+        document.body.appendChild(dataLabels);
         const script = document.createElement("script");
         script.onload = initLib;
         script.setAttribute("type", "text/javascript");
@@ -296,7 +271,7 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
   const config = {
     chartType: "gjs-charts-bar",
     chartScript: script,
-    chartBlockName: "Chart",
+    chartBlockName: "Bar Chart",
     ...opts,
   };
   addTraits(editor, config);
