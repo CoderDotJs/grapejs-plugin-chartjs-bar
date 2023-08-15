@@ -67,9 +67,9 @@ export const addTraits = (editor, opts) => {
         }
 
         values.forEach((dataSet) => {
-          // const div = document.createElement("div");
-          // div.style =
-          //   "margin:5px; outline:2px solid;display:block;overflow:auto;";
+          const div = document.createElement("div");
+          div.style =
+            "margin:5px; outline:2px solid;display:block;overflow:auto;";
           // const dataSetLabelInput = document.createElement("input");
           // dataSetLabelInput.type = "text";
           // dataSetLabelInput.className = "charts__data_set_label_" + i;
