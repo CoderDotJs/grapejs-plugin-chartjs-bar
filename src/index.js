@@ -174,6 +174,7 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
               padding: 80,
             },
             datalabels: {
+              display: false,
               color: "#000000",
               formatter: (value, ctx) => {
                 let sum = 0;
@@ -182,6 +183,7 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
                   sum += Number(data);
                 });
                 let percentage = ((value * 100) / sum).toFixed(1);
+                console.log(percentage);
                 return isNaN(value)
                   ? "0%"
                   : !isNaN(percentage)
@@ -192,8 +194,8 @@ export default grapesjs.plugins.add("gjs-charts", (editor, opts = {}) => {
               },
               anchor: "end",
               align: "start",
-              offset: -20,
-              clamp: false,
+              // offset: -20,
+              // clamp: false,
             },
             tooltip: {
               titleColor: "#fff",
